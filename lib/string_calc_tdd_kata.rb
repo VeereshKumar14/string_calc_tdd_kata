@@ -18,6 +18,7 @@ class StringCalcTddKata
             raise ArgumentError, "negatives not allowed: #{negatives.join(', ')}"
         end
 
-        sum_of_numbers.sum
+        # Ignore numbers > 1000
+        sum_of_numbers.reject { |num| num > 1000 }.sum
     end
 end
