@@ -1,5 +1,5 @@
 class StringCalcTddKata
     def self.add(input)
-        # code logic
+        return 0 if input.strip.empty?
     end
 end
