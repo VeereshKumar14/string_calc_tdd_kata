@@ -7,7 +7,17 @@ class StringCalcTddKata
 
         if input.start_with?("//")
             delimiter_section, numbers_str = input.split("\n", 2)
-            delimiter = Regexp.new(Regexp.escape(delimiter_section[2]))
+            
+            # Match multiple delimiters like [*], [%%], etc.
+            custom_delimiters = delimiter_section.scan(/\[([^\]]+)\]/).flatten
+
+            if custom_delimiters.any?
+                escaped_delimiters = custom_delimiters.map { |d| Regexp.escape(d) }
+                delimiter = Regexp.new(escaped_delimiters.join("|"))
+            else
+                # single delimiter like //;\n
+                delimiter = Regexp.new(Regexp.escape(delimiter_section[2]))
+            end    
         end
 
         sum_of_numbers = numbers_str.split(delimiter).map(&:to_i)  
