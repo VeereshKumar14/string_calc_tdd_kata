@@ -30,5 +30,14 @@ RSpec.describe StringCalcTddKata do
         expect(described_class.add('5,5,5,5,5')).to eq(25)
       end
     end
+
+    context 'with newline as delimiter' do
+      it 'handles new lines between numbers' do
+        expect(described_class.add("1\n2,3")).to eq(6)
+        expect(described_class.add("4\n5\n6")).to eq(15)
+      end
+    end
+
+    
   end
 end
