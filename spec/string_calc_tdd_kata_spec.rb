@@ -65,5 +65,26 @@ RSpec.describe StringCalcTddKata do
         expect(described_class.add("1000,1001,3")).to eq(1003)
       end
     end
+
+    context "with custom multi-character delimiter" do
+      it "handles delimiters of any length" do
+        expect(described_class.add("//[***]\n1***2***3")).to eq(6)
+        expect(described_class.add("//[abc]\n4abc5abc1")).to eq(10)
+      end
+    end
+
+    context "with multiple single-character delimiters" do
+      it "handles each delimiter" do
+        expect(described_class.add("//[*][%]\n1*2%3")).to eq(6)
+        expect(described_class.add("//[#][@]\n5#3@2")).to eq(10)
+      end
+    end
+
+    context "with multiple multi-character delimiters" do
+      it "handles complex delimiters" do
+        expect(described_class.add("//[**][%%]\n1**2%%3")).to eq(6)
+        expect(described_class.add("//[--][@@@]\n2--3@@@4")).to eq(9)
+      end
+    end
   end
 end
