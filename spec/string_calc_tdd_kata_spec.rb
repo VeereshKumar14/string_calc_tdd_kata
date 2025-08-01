@@ -8,6 +8,27 @@ RSpec.describe StringCalcTddKata do
       it 'returns 0' do
         expect(described_class.add('')).to eq(0)
       end
-    end 
+    end
+
+    context 'with one number' do
+      it 'returns the number itself' do
+        expect(described_class.add('1')).to eq(1)
+        expect(described_class.add('7')).to eq(7)
+      end
+    end
+
+    context 'with two numbers separated by comma' do
+      it 'returns their sum' do
+        expect(described_class.add('1,2')).to eq(3)
+        expect(described_class.add('10,20')).to eq(30)
+      end
+    end
+
+    context 'with unknown amount of numbers' do
+      it 'returns their sum' do
+        expect(described_class.add('1,2,3,4')).to eq(10)
+        expect(described_class.add('5,5,5,5,5')).to eq(25)
+      end
+    end
   end
 end
