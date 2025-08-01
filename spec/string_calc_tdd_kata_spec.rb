@@ -38,6 +38,11 @@ RSpec.describe StringCalcTddKata do
       end
     end
 
-    
+    context 'with custom single-character delimiter' do
+      it 'uses the specified delimiter' do
+        expect(described_class.add("//;\n1;2")).to eq(3)
+        expect(described_class.add("//-\n4-5-6")).to eq(15)
+      end
+    end
   end
 end
