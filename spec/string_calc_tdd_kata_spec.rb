@@ -58,5 +58,12 @@ RSpec.describe StringCalcTddKata do
         }.to raise_error(ArgumentError, "negatives not allowed: -2, -5")
       end
     end
+
+    context 'with numbers greater than 1000' do
+      it 'ignores numbers > 1000' do
+        expect(described_class.add("2,1001")).to eq(2)
+        expect(described_class.add("1000,1001,3")).to eq(1003)
+      end
+    end
   end
 end
