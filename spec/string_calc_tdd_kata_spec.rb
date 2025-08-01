@@ -44,5 +44,19 @@ RSpec.describe StringCalcTddKata do
         expect(described_class.add("//-\n4-5-6")).to eq(15)
       end
     end
+
+    context 'with negative numbers' do
+      it 'raises an error with the negative number' do
+        expect {
+          described_class.add("1,-2")
+        }.to raise_error(ArgumentError, "negatives not allowed: -2")
+      end
+
+      it 'raises an error listing all negative numbers' do
+        expect {
+          described_class.add("1,-2,-5,3")
+        }.to raise_error(ArgumentError, "negatives not allowed: -2, -5")
+      end
+    end
   end
 end
