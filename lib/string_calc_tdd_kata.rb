@@ -10,7 +10,13 @@ class StringCalcTddKata
             delimiter = Regexp.new(Regexp.escape(delimiter_section[2]))
         end
 
-        sum_of_numbers = numbers_str.split(delimiter).map(&:to_i)            
+        sum_of_numbers = numbers_str.split(delimiter).map(&:to_i)  
+
+        # Negative check
+        negatives = sum_of_numbers.select { |n| n < 0 }
+        unless negatives.empty?
+            raise ArgumentError, "negatives not allowed: #{negatives.join(', ')}"
+        end
 
         sum_of_numbers.sum
     end
