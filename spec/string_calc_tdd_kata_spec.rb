@@ -1,6 +1,6 @@
-require_relative '../lib/string_calculator'
+require_relative '../lib/string_calc_tdd_kata'
 
-RSpec.describe StringCalculator do
+RSpec.describe StringCalcTddKata do
   describe '.add' do
     subject { described_class }
 
@@ -9,6 +9,5 @@ RSpec.describe StringCalculator do
         expect(described_class.add('')).to eq(0)
       end
     end 
-
-
   end
+end
